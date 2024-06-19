@@ -1,6 +1,7 @@
 <?php
+namespace GuruSessionHandler;
 
-class RedisSessionHandler implements SessionHandlerInterface
+class RedisSessionHandler implements \SessionHandlerInterface
 {
     private $redis;
     private $ttl;

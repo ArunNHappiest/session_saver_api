@@ -1,10 +1,14 @@
 <?php
 
-class RedisClusterSessionHandler implements SessionHandlerInterface {
+namespace GuruSessionHandler;
+
+class RedisClusterSessionHandler implements \SessionHandlerInterface
+{
     private $redis;
     private $ttl;
 
-    public function __construct(array $clusterNodes, $ttl = 3600) {
+    public function __construct(array $clusterNodes, $ttl = 3600)
+    {
         $this->ttl = $ttl;
 
         // Create a RedisCluster instance
@@ -14,34 +18,41 @@ class RedisClusterSessionHandler implements SessionHandlerInterface {
         }
     }
 
-    public function open($savePath, $sessionName) {
+    public function open($savePath, $sessionName)
+    {
         return true;
     }
 
-    public function close() {
+    public function close()
+    {
         return true;
     }
 
-    public function read($sessionId) {
+    public function read($sessionId)
+    {
         $data = $this->redis->get($sessionId);
         return $data ? $data : '';
     }
 
-    public function write($sessionId, $data) {
+    public function write($sessionId, $data)
+    {
         return $this->redis->setex($sessionId, $this->ttl, $data);
     }
 
-    public function destroy($sessionId) {
+    public function destroy($sessionId)
+    {
         $this->redis->del($sessionId);
         return true;
     }
 
-    public function gc($maxLifetime) {
+    public function gc($maxLifetime)
+    {
         // Redis handles expiration automatically
         return true;
     }
 
-    public function create_sid() {
+    public function create_sid()
+    {
         $sid = bin2hex(random_bytes(32)); // Create a secure session ID
         return $sid;
     }

@@ -1,6 +1,7 @@
 <?php
+namespace GuruSessionHandler;
 
-class ApiSessionHandler implements SessionHandlerInterface
+class ApiSessionHandler implements \SessionHandlerInterface
 {
     private $apiBaseUrl;
 
@@ -12,11 +13,10 @@ class ApiSessionHandler implements SessionHandlerInterface
     public function open($savePath, $sessionName)
     {
         $session_id = session_id();
-        if(empty($session_id)) {
+        if (empty($session_id)) {
             $new_session_id = $this->generateSessionId();
             session_commit();
             session_id($new_session_id);
-            
         }
         // No action necessary
         return true;
@@ -66,7 +66,7 @@ class ApiSessionHandler implements SessionHandlerInterface
     {
         $url = $this->apiBaseUrl . '/create-session-id';
         $postData = [
-            'ip_address' => $_SERVER['REMOTE_ADDR'], 
+            'ip_address' => $_SERVER['REMOTE_ADDR'],
             'device_info' => $_SERVER['HTTP_USER_AGENT']
         ];
 
