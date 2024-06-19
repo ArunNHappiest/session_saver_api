@@ -5,7 +5,7 @@ require_once 'src/ApiSessionHandler.php';
 require_once 'src/RedisClusterSessionHandler.php';
 require_once 'src/RedisSessionHandler.php';
 
-$useHandler = 'redis_cluster'; // Can be 'api', 'redis_cluster', or 'redis'
+$useHandler = 'redis'; // Can be 'api', 'redis_cluster', or 'redis'
 
 switch ($useHandler) {
     case 'api':
