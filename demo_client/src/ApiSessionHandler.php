@@ -1,5 +1,4 @@
 <?php
-namespace GuruSessionHandler;
 
 class ApiSessionHandler implements \SessionHandlerInterface
 {

@@ -1,7 +1,5 @@
 <?php
 
-namespace GuruSessionHandler;
-
 class RedisClusterSessionHandler implements \SessionHandlerInterface
 {
     private $redis;

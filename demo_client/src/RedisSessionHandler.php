@@ -1,5 +1,4 @@
 <?php
-namespace GuruSessionHandler;
 
 class RedisSessionHandler implements \SessionHandlerInterface
 {

@@ -1,11 +1,9 @@
 <?php
 ob_start();
-require 'vendor/autoload.php';
-
-use GuruSessionHandler\GuruAppSessionHandler;
-use GuruSessionHandler\ApiSessionHandler;
-use GuruSessionHandler\RedisClusterSessionHandler;
-use GuruSessionHandler\RedisSessionHandler;
+require_once 'src/GuruAppSessionHandler.php';
+require_once 'src/ApiSessionHandler.php';
+require_once 'src/RedisClusterSessionHandler.php';
+require_once 'src/RedisSessionHandler.php';
 
 $useHandler = 'redis_cluster'; // Can be 'api', 'redis_cluster', or 'redis'
 
