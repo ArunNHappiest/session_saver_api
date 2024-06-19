@@ -16,8 +16,8 @@ switch ($useHandler) {
         $sessionHandler = new RedisClusterSessionHandler($clusterNodes, 3600);
         break;
     case 'redis':
-        //$redisHost = 'localhost';
-        $redisHost = 'clustercfg.pgsession2.pr3z0i.memorydb.ap-south-1.amazonaws.com';
+        $redisHost = 'localhost';
+        //$redisHost = 'clustercfg.pgsession2.pr3z0i.memorydb.ap-south-1.amazonaws.com';
         $redisPort = 6379;
         $sessionHandler = new RedisSessionHandler($redisHost, $redisPort, 3600);
         break;
